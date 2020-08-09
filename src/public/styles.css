@@ -1,6 +1,6 @@
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
 body {
-  background: rgb(116, 33, 33);
+  background: rgb(116, 33, 33) !important;
 }
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -17,7 +17,7 @@ body {
   }
 }
 .jumbotron{
-  background: rgb(230, 95, 95);
+  background: rgb(230, 95, 95) !important;
 }
 .col-md-4{
   padding: 10px;
