@@ -5,10 +5,11 @@ const routes = require('./routes/routes'); //LLamo al archivo routes.js (ahi con
 require('./db'); //LLamo al archivo db.js (ahi es donde inicializo la base de datos)
 
 app.set('port', process.env.PORT || 3000); //Setea el puerto al que te da el servidor donde desplegamos el proyecto, si no te da uno, se utiliza el puerto 3000 por defecto
-app.set('views', path.join(__dirname, 'public')); //Le doy la direccion de las views(archivos htmls)
+app.set('views', path.join(__dirname, 'views')); //Le doy la direccion de las views(archivos htmls)
 app.set('view engine', 'ejs'); //LLama a EJS, que sirve para complementar a HTML y JS(Trabaja con templates, es decir que le da un dinamismo a la pag, ya que hace que las etiquetas no tengan un valor fijo)
 
 app.use('/', routes);
+app.use(express.static(path.join(__dirname, 'views')));
 
 //Inicializa el server
 app.listen(app.get('port'), () => {
