@@ -19,6 +19,7 @@
 #navbar{
   height: 25px;
   width: 100%;
+  padding-top: 0px;
 }
 li{
   float: left;
@@ -26,7 +27,6 @@ li{
 }
 #navbar a{
   color: black;
-
 }
 #header
 {
@@ -46,8 +46,33 @@ li{
   margin-left: 300px;
 }
 #pedido{
-  text-decoration: none;
   font-size: xx-large;
   color: black;
   margin-left: 80%;
+}
+#footer{
+  height: 40px;
+  width: 100%;
+  margin-top: 15%;
+  background-color: rgb(224, 224, 224);
+}
+
+#left-footer{
+  width: 20%;
+  height: 100%;
+  text-align: left;
+  float: left;
+}
+#left-footer p{
+  padding: 7px;
+  margin-left: 10px;
+}
+#right-footer{
+  width: 25%;
+  height: 100%;
+  margin-left: 78%;
+}
+#right-footer p{
+  padding: 7px;
+  margin-right: 10px;
 }
