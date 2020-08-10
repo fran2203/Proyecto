@@ -1,0 +1,53 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) 
+{
+  .bd-placeholder-img-lg 
+  {
+    font-size: 3.5rem;
+  } 
+} 
+#navbar{
+  height: 25px;
+  width: 100%;
+}
+li{
+  float: left;
+  list-style-type: none;
+}
+#navbar a{
+  color: black;
+
+}
+#header
+{
+  margin-top: 100px;
+  height: 100px;
+  width: 650px;
+  text-align: center;
+}
+#header p{
+  font-size: 25px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+#pasos{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 25px;
+  margin-top: 100px;
+  margin-left: 300px;
+}
+#pedido{
+  text-decoration: none;
+  font-size: xx-large;
+  color: black;
+  margin-left: 80%;
+}
