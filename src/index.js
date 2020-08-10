@@ -9,7 +9,7 @@ app.set('views', path.join(__dirname, 'views')); //Le doy la direccion de las vi
 app.set('view engine', 'ejs'); //LLama a EJS, que sirve para complementar a HTML y JS(Trabaja con templates, es decir que le da un dinamismo a la pag, ya que hace que las etiquetas no tengan un valor fijo)
 
 app.use('/', routes);
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 //Inicializa el server
 app.listen(app.get('port'), () => {
