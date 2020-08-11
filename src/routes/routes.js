@@ -3,7 +3,7 @@ const router = Router();
 const Comida = require('../DB models/comida');
 
 router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a la pag principal (Esto despues lo asociamos al HTML, por ahora lo dejo asi)
-    res.render('index');
+    res.render('home');
 })
 
 router.get('/loggin', (req, res) => {
