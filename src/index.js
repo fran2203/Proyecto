@@ -3,7 +3,11 @@ const express = require('express');//Importo Express (framework de Nodejs orient
 const app = express();
 const routes = require('./routes/routes'); //LLamo al archivo routes.js (ahi configuro las distintas rutas) que esta en la carpeta routes
 const multer = require('multer');
+const passport = require('passport');
+const session = require('express-session');
+const flash = require('connect-flash');
 require('./db'); //LLamo al archivo db.js (ahi es donde inicializo la base de datos)
+require('./libs/passport');
 
 app.set('port', process.env.PORT || 3000); //Setea el puerto al que te da el servidor donde desplegamos el proyecto, si no te da uno, se utiliza el puerto 3000 por defecto
 app.set('views', path.join(__dirname, 'views')); //Le doy la direccion de las views(archivos htmls)
@@ -17,6 +21,19 @@ const guardado = multer.diskStorage({
 });
 app.use(multer({storage: guardado}).single('imagen'));
 app.use(express.urlencoded({extended: false}));
+app.use(session({
+    secret: 'FranBartoTienda',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((req, res, next) => {
+    app.locals.verificacion = req.flash('verificacion');
+    next();
+});
+
 app.use('/', routes);
 app.use(express.static(path.join(__dirname, 'static')));
 
