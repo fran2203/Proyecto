@@ -24,7 +24,7 @@ passport.use('autentificacion', new Strategy({
         return done(null, false, req.flash('verficacion', 'El usuario no existe'));
     }
     if(!pass) {
-        return done(null, false, req.flash('verificacion', 'Contrasña incorrecta'));
+        return done(null, false, req.flash('verificacion', 'Contraseña incorrecta'));
     }
     done(null, admin);
 }));

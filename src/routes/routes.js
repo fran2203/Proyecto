@@ -14,27 +14,27 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('autentificacion', {
     successRedirect: '/admin',
-    failureRedirect: '/loggin',
+    failureRedirect: '/login',
     passReqToCallback: true
 }));
 
-router.get('/admin', (req, res) => {
+router.get('/admin', autentificacion,(req, res) => {
     res.send('Administrar');
 })
 
-router.get('/admin:id', (req, res) => {
+router.get('/admin/:id', autentificacion,(req, res) => {
     res.send('Editar comida');
 })
 
-router.post('/admin:id', (req, res) => {
+router.post('/admin/:id', autentificacion, (req, res) => {
     res.send('Editar comida');
 })
 
-router.get('/admin/agregar', (req, res) => {
+router.get('/admin/agregar', autentificacion, (req, res) => {
     res.send('agregar comida');
 })
 
-router.post('/admin/agregar', async (req, res) => {
+router.post('/admin/agregar', autentificacion, async (req, res) => {
     const comida = new Comida(req.body);
     await comida.save();
     res.send('recibido');
@@ -47,5 +47,12 @@ router.get('/comprar', (req, res) => {
 router.post('/comprar', (req, res) => {
     res.send('Compra realizada');
 })
+
+function autentificacion(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+}
 
 module.exports = router;            //La exporto para poder utilizarla en los demas archivos donde se llama este archivo (Index.js)
