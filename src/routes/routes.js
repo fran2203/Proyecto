@@ -40,8 +40,11 @@ router.post('/admin/agregar', autentificacion, async (req, res) => {
     res.send('recibido');
 })
 
-router.get('/comprar', (req, res) => {
-    res.send('Comprar');
+router.get('/comprar', async (req, res) => {
+    const comidas = await Comida.find();
+    res.render('comprar', {
+        comidas
+    });
 })
 
 router.post('/comprar', (req, res) => {

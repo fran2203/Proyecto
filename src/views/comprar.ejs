@@ -1,0 +1,90 @@
+<%- include('layouts/header'); -%>
+<h2>Frutas</h2>
+
+<% for(var i = 0; i < comidas.length; i++){ %>
+    <% if(comidas[i].categoria == 'frutas'){ %>
+    <div style="display: flex;">
+        <div>
+            <div>
+                <h3>Imagen</h3>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Nombre</h3>
+            </div>
+            <div>
+                <%= comidas[i].nombre %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Cantidad</h3>
+            </div>
+            <div>
+                <%= comidas[i].cantidad %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Precio</h3>
+            </div>
+            <div>
+                <%= comidas[i].precio %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Cantidad a Elegir</h3>
+                <input type="number">
+            </div>
+        </div>
+    </div>
+    <% } %>
+<% } %>
+
+<h2>Carnes</h2>
+
+<% for(var i = 0; i < comidas.length; i++){ %>
+    <% if(comidas[i].categoria == 'carnes'){ %>
+    <div style="display: flex;">
+        <div>
+            <div>
+                <h3>Imagen</h3>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Nombre</h3>
+            </div>
+            <div>
+                <%= comidas[i].nombre %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Cantidad</h3>
+            </div>
+            <div>
+                <%= comidas[i].cantidad %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Precio</h3>
+            </div>
+            <div>
+                <%= comidas[i].precio %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Cantidad a Elegir</h3>
+                <input type="number">
+            </div>
+        </div>
+    </div>
+    <% } %>
+<% } %>
+
+<%- include('layouts/footer'); -%>
