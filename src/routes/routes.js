@@ -47,7 +47,9 @@ router.get('/comprar', async (req, res) => {
     });
 })
 
-router.post('/comprar', (req, res) => {
+router.post('/comprar', async (req, res) => {
+    console.log(req.body);
+    
     res.send('Compra realizada');
 })
 
