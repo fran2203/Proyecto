@@ -48,8 +48,11 @@ router.get('/comprar', async (req, res) => {
 })
 
 router.post('/comprar', async (req, res) => {
-    console.log(req.body);
-    
+    for (let i in req.body) {
+        var x = await Comida.find({nombre: i})
+        console.log(x)
+    }
+
     res.send('Compra realizada');
 })
 
