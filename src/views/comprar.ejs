@@ -1,6 +1,8 @@
 <%- include('layouts/header'); -%>
 <form action="/comprar" method="POST">
-
+    <% if(msg !== ''){ %>
+        <h2><%= msg %></h2>
+    <% } %>
     <h2>Frutas</h2>
 
     <% for(var i = 0; i < comidas.length; i++){ %>

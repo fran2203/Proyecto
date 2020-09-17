@@ -43,17 +43,41 @@ router.post('/admin/agregar', autentificacion, async (req, res) => {
 router.get('/comprar', async (req, res) => {
     const comidas = await Comida.find();
     res.render('comprar', {
-        comidas
+        comidas,
+        msg
     });
 })
 
+var msg = '';
+
 router.post('/comprar', async (req, res) => {
-    for (let i in req.body) {
-        var x = await Comida.find({nombre: i})
-        console.log(x)
+    msg = '';
+    let verificar = true;
+    let contMsg = 1;
+
+    for (let i in req.body) {                   // i = nombre comida / req.body[i] = cantidad solicitada
+        let x = await Comida.find({nombre: i}); // x = comida a modificar
+        let nuevaCantidad = (x[0].cantidad - req.body[i]);
+        if (nuevaCantidad < 0) {
+            if (contMsg == 1) {
+                msg = msg + `No hay suficiente cantidad de ${i}`;   // Este mensaje aparecera en la pagina
+                contMsg++;
+            } else {
+                msg = msg + `, ${i}`;
+            }
+            verificar = false;                  // Si verificar es falso, no se realizara la compra
+        }
     }
 
-    res.send('Compra realizada');
+    console.log(verificar);
+
+    if (verificar) {
+        console.log('Todo OK');
+        res.send('Compra realizada');
+    } else {
+        console.log('Verifica que haya tal cantidad');
+        res.redirect('/comprar'); // Si verificar es falso, se redirecciona nuevamente a la pagina con el mensaje de lo que hace falta
+    }
 })
 
 function autentificacion(req, res, next){
