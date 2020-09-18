@@ -54,22 +54,32 @@ router.post('/comprar', async (req, res) => {
     msg = '';
     let verificar = true;
     let contMsg = 1;
+    var ComidaAActualizar = [];
 
     for (let i in req.body) {                   // i = nombre comida / req.body[i] = cantidad solicitada
         let x = await Comida.find({nombre: i}); // x = comida a modificar
-        let nuevaCantidad = (x[0].cantidad - req.body[i]);
-        if (nuevaCantidad < 0) {
+        if ((x[0].cantidad - req.body[i]) < 0 || req.body[i] < 0) {     // Si no hay suficiente cantidad en la base de datos, o si el numero es negativo, dará un mensaje de error
             if (contMsg == 1) {
-                msg = msg + `No hay suficiente cantidad de ${i}`;   // Este mensaje aparecera en la pagina
+                msg = msg + `No hay suficiente cantidad de: ${i}`;   // Este mensaje aparecera en la pagina
                 contMsg++;
             } else {
                 msg = msg + `, ${i}`;
             }
-            verificar = false;                  // Si verificar es falso, no se realizara la compra
+            verificar = false; // Si verificar es falso, no se realizara la compra
+        } else {              // Si la cantidad digitada es correcta, se creará el nuevo valor de la comida con la cantidad restante actualizada
+            var nuevaCantidad = (x[0].cantidad - req.body[i]);
+            var nuevaComida = {
+                nombre: x[0].nombre, 
+                categoria: x[0].categoria, 
+                cantidad: nuevaCantidad,
+                precio: x[0].precio
+            }
+            ComidaAActualizar.push(nuevaComida);
+            // await Comida.findByIdAndUpdate(x[0]._id, nuevaComida);
         }
     }
 
-    console.log(verificar);
+    console.log(ComidaAActualizar);
 
     if (verificar) {
         console.log('Todo OK');
