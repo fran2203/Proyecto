@@ -69,23 +69,23 @@ router.post('/comprar', async (req, res) => {
         } else {              // Si la cantidad digitada es correcta, se creará el nuevo valor de la comida con la cantidad restante actualizada
             var nuevaCantidad = (x[0].cantidad - req.body[i]);
             var nuevaComida = {
+                _id: x[0]._id,
                 nombre: x[0].nombre, 
                 categoria: x[0].categoria, 
                 cantidad: nuevaCantidad,
                 precio: x[0].precio
             }
             ComidaAActualizar.push(nuevaComida);
-            // await Comida.findByIdAndUpdate(x[0]._id, nuevaComida);
         }
     }
 
-    console.log(ComidaAActualizar);
-
     if (verificar) {
-        console.log('Todo OK');
+        for (let i in ComidaAActualizar) {
+            console.log(ComidaAActualizar[i])
+            await Comida.findByIdAndUpdate(ComidaAActualizar[i]._id, ComidaAActualizar[i]);           
+        }
         res.send('Compra realizada');
     } else {
-        console.log('Verifica que haya tal cantidad');
         res.redirect('/comprar'); // Si verificar es falso, se redirecciona nuevamente a la pagina con el mensaje de lo que hace falta
     }
 })
