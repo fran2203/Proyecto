@@ -4,7 +4,7 @@ const Comida = require('../DB models/comida');
 const Admin = require('../DB models/admin');
 const passport = require('passport');
 
-router.get('/home', (req, res) => {     //Configuramos que hacer cuando hay un GET a la pag principal (Esto despues lo asociamos al HTML, por ahora lo dejo asi)
+router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a la pag principal (Esto despues lo asociamos al HTML, por ahora lo dejo asi)
     res.render('home');
 })
 
