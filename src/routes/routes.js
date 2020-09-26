@@ -9,7 +9,7 @@ router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a
 })
 
 router.get('/login', (req, res) => {
-    res.render('login.ejs');
+    res.render('login');
 })
 
 router.post('/login', passport.authenticate('autentificacion', {

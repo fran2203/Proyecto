@@ -91,3 +91,9 @@ img {
   padding: 7px;
   margin-right: 10px;
 }
+.login-container{
+  margin: 30px;
+}
+.login-container .login-input{
+  width: 40%;
+}
