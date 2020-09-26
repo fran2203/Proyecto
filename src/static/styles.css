@@ -1,4 +1,4 @@
-/* NAVBAR */
+/* header */
 
 #navbar{
   height: 40px;
@@ -11,22 +11,25 @@
 }
 li{
   display: inline-block;
-  padding: 5px 15px;
+  padding: 6px 20px;
 }
 #navbar a{
   color: black;
 }
+#navbar #home{
+  padding-left: 0px;
+}
 
 /* TITULO */
 
-#header
+#title
 {
   margin-top: 100px;
   height: 100px;
   width: 650px;
   text-align: center;
 }
-#header p{
+#title p{
   font-size: 25px;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -52,6 +55,7 @@ img {
 }
 .p_pasos {
   width: 70%;
+  padding-top: 3%;
 }
 
 /* LINK PEDIDO */
@@ -60,6 +64,7 @@ img {
   font-size: xx-large;
   color: black;
   margin-left: 80%;
+  margin-bottom: 20px;
   display: inline-block;
 }
 
@@ -68,7 +73,6 @@ img {
 #footer{
   background-color: rgb(224, 224, 224);
   height: 60px;
-  margin-bottom: 0;
   display: flex;
 }
 #left-footer{
@@ -91,9 +95,25 @@ img {
   padding: 7px;
   margin-right: 10px;
 }
+
+/* LOGIN */
 .login-container{
-  margin: 30px;
+  margin-top: 13.5%;
+  margin-bottom: 18.5%;
+  text-align: center;
 }
 .login-container .login-input{
-  width: 40%;
+  width: 15%;  
+  margin-left: 42.5%;
 }
+
+/* SINGUP */
+.container {
+  max-width: 960px;
+}
+#container-regis{
+  margin-top: 0%;  margin-left: 25%;
+  margin-bottom:  0px;
+}
+
+.lh-condensed { line-height: 1.25; }
