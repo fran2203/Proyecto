@@ -94,7 +94,20 @@ router.get('/datos', (req, res) => {
 })
 
 router.post('/datos', (req, res) => {
-    console.log(req.body);
+    if (req.body.pago == "Efectivo") {
+        res.redirect('/compra-realizada')
+    }
+    else {
+        res.redirect('/tarjeta')
+    }
+})
+
+router.get('/compra-realizada', (req, res) => {
+    res.send('se realizo la compra')
+})
+
+router.get('/tarjeta', (req, res) => {
+    res.send('digite datos tarjeta')
 })
 
 function autentificacion(req, res, next){
