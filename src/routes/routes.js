@@ -11,9 +11,6 @@ router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a
 router.get('/login', (req, res) => {
     res.render('login');
 })
-router.get('/singup', (req, res) => {
-    res.render('singup');
-})
 router.post('/login', passport.authenticate('autentificacion', {
     successRedirect: '/admin',
     failureRedirect: '/login',
@@ -57,7 +54,7 @@ router.post('/comprar', async (req, res) => {
     let verificar = true;
     let contMsg = 1;
     var ComidaAActualizar = [];
-
+    
     for (let i in req.body) {                   // i = nombre comida / req.body[i] = cantidad solicitada
         let x = await Comida.find({nombre: i}); // x = comida a modificar
         if ((x[0].cantidad - req.body[i]) < 0 || req.body[i] < 0) {     // Si no hay suficiente cantidad en la base de datos, o si el numero es negativo, dará un mensaje de error
@@ -80,16 +77,24 @@ router.post('/comprar', async (req, res) => {
             ComidaAActualizar.push(nuevaComida);
         }
     }
-
+    
     if (verificar) {
         for (let i in ComidaAActualizar) {
             console.log(ComidaAActualizar[i])
             await Comida.findByIdAndUpdate(ComidaAActualizar[i]._id, ComidaAActualizar[i]);           
         }
-        res.send('Compra realizada');
+        res.redirect('/datos');
     } else {
         res.redirect('/comprar'); // Si verificar es falso, se redirecciona nuevamente a la pagina con el mensaje de lo que hace falta
     }
+})
+
+router.get('/datos', (req, res) => {
+    res.render('datos');
+})
+
+router.post('/datos', (req, res) => {
+    console.log(req.body);
 })
 
 function autentificacion(req, res, next){
