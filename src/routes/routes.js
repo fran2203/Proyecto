@@ -48,13 +48,15 @@ router.get('/comprar', async (req, res) => {
 })
 
 var msg = '';
+var ComidaAActualizar = []
 
 router.post('/comprar', async (req, res) => {
     msg = '';
     let verificar = true;
     let contMsg = 1;
-    var ComidaAActualizar = [];
-    
+    var ComidaSolicitada = [];
+    ComidaAActualizar = [];
+
     for (let i in req.body) {                   // i = nombre comida / req.body[i] = cantidad solicitada
         let x = await Comida.find({nombre: i}); // x = comida a modificar
         if ((x[0].cantidad - req.body[i]) < 0 || req.body[i] < 0) {     // Si no hay suficiente cantidad en la base de datos, o si el numero es negativo, dará un mensaje de error
@@ -75,14 +77,17 @@ router.post('/comprar', async (req, res) => {
                 precio: x[0].precio
             }
             ComidaAActualizar.push(nuevaComida);
+            var comidaPedida = {
+                nombre: x[0].nombre,
+                cantidad: req.body[i]
+            }
+            ComidaSolicitada.push(comidaPedida);
         }
     }
-    
+
     if (verificar) {
-        for (let i in ComidaAActualizar) {
-            console.log(ComidaAActualizar[i])
-            await Comida.findByIdAndUpdate(ComidaAActualizar[i]._id, ComidaAActualizar[i]);           
-        }
+        datos.comidaActualizada = ComidaAActualizar
+        datos.comida = ComidaSolicitada;
         res.redirect('/datos');
     } else {
         res.redirect('/comprar'); // Si verificar es falso, se redirecciona nuevamente a la pagina con el mensaje de lo que hace falta
@@ -93,8 +98,28 @@ router.get('/datos', (req, res) => {
     res.render('datos');
 })
 
-router.post('/datos', (req, res) => {
+var datos = {
+    comidaActualizada: [],
+    comida: [],
+    nombre: '',
+    apellido: '',
+    domicilio: '',
+    email: '',
+    pago: ''
+}
+
+router.post('/datos', async (req, res) => {
     if (req.body.pago == "Efectivo") {
+        var { nombre, apellido, domicilio, email, pago } = req.body;
+        datos.nombre = nombre;
+        datos.apellido = apellido;
+        datos.domicilio = domicilio;
+        datos.email = email;
+        datos.pago = pago
+
+        for (let i in datos.comidaActualizada) {
+            await Comida.findByIdAndUpdate(datos.comidaActualizada[i]._id, datos.comidaActualizada[i])
+        }
         res.redirect('/compra-realizada')
     }
     else {
