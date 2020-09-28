@@ -48,14 +48,13 @@ router.get('/comprar', async (req, res) => {
 })
 
 var msg = '';
-var ComidaAActualizar = []
 
 router.post('/comprar', async (req, res) => {
     msg = '';
     let verificar = true;
     let contMsg = 1;
-    var ComidaSolicitada = [];
-    ComidaAActualizar = [];
+    datos.comidaActualizada = [];
+    datos.comida = [];
 
     for (let i in req.body) {                   // i = nombre comida / req.body[i] = cantidad solicitada
         let x = await Comida.find({nombre: i}); // x = comida a modificar
@@ -67,7 +66,7 @@ router.post('/comprar', async (req, res) => {
                 msg = msg + `, ${i}`;
             }
             verificar = false; // Si verificar es falso, no se realizara la compra
-        } else {              // Si la cantidad digitada es correcta, se creará el nuevo valor de la comida con la cantidad restante actualizada
+        } else if(req.body[i] > 0){              // Si la cantidad digitada es correcta, se creará el nuevo valor de la comida con la cantidad restante actualizada
             var nuevaCantidad = (x[0].cantidad - req.body[i]);
             var nuevaComida = {
                 _id: x[0]._id,
@@ -76,18 +75,16 @@ router.post('/comprar', async (req, res) => {
                 cantidad: nuevaCantidad,
                 precio: x[0].precio
             }
-            ComidaAActualizar.push(nuevaComida);
+            datos.comidaActualizada.push(nuevaComida);
             var comidaPedida = {
                 nombre: x[0].nombre,
                 cantidad: req.body[i]
             }
-            ComidaSolicitada.push(comidaPedida);
+            datos.comida.push(comidaPedida);
         }
     }
 
     if (verificar) {
-        datos.comidaActualizada = ComidaAActualizar
-        datos.comida = ComidaSolicitada;
         res.redirect('/datos');
     } else {
         res.redirect('/comprar'); // Si verificar es falso, se redirecciona nuevamente a la pagina con el mensaje de lo que hace falta
