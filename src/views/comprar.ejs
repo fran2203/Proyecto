@@ -1,98 +1,100 @@
 <%- include('layouts/header'); -%>
-<form action="/comprar" method="POST">
-    <% if(msg !== ''){ %>
-        <h2><%= msg %></h2>
-    <% } %>
-    <h2>Frutas</h2>
-
-    <% for(var i = 0; i < comidas.length; i++){ %>
-        <% if(comidas[i].categoria == 'frutas'){ %>
-        <div style="display: flex;">
-            <div>
-                <div>
-                    <h3>Imagen</h3>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Nombre</h3>
-                </div>
-                <div>
-                    <%= comidas[i].nombre %>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Cantidad</h3>
-                </div>
-                <div>
-                    <%= comidas[i].cantidad %>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Precio</h3>
-                </div>
-                <div>
-                    <%= comidas[i].precio %>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Cantidad a Elegir</h3>
-                    <input type="number" name="<%= comidas[i].nombre %>" value="0">
-                </div>
-            </div>
-        </div>
-        <% } %>
-    <% } %>
-
-    <h2>Carnes</h2>
-
-    <% for(var i = 0; i < comidas.length; i++){ %>
-        <% if(comidas[i].categoria == 'carnes'){ %>
-        <div style="display: flex;">
-            <div>
-                <div>
-                    <h3>Imagen</h3>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Nombre</h3>
-                </div>
-                <div>
-                    <%= comidas[i].nombre %>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Cantidad</h3>
-                </div>
-                <div>
-                    <%= comidas[i].cantidad %>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Precio</h3>
-                </div>
-                <div>
-                    <%= comidas[i].precio %>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Cantidad a Elegir</h3>
-                    <input type="number" name="<%= comidas[i].nombre %>" value="0">
-                </div>
-            </div>
-        </div>
-        <% } %>
-    <% } %>
-
-    <button type="submit">
-        Comprar
-    </button>
-</form>
+<div class ="compra-container">
+    <form action="/comprar" method="POST">
+       <% if(msg !== ''){ %>
+           <h2 style="color: #CD1E1E;"><%= msg %></h2>
+       <% } %>
+       <h2>Frutas</h2>
+    
+       <% for(var i = 0; i < comidas.length; i++){ %>
+           <% if(comidas[i].categoria == 'frutas'){ %>
+           <div class="comida-container">
+               <div class="div-separador">
+                   <div>
+                       <h3>Imagen</h3>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Nombre</h3>
+                   </div>
+                   <div class="comida-info">
+                       <%= comidas[i].nombre %>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Cantidad</h3>
+                   </div>
+                   <div class="comida-info">
+                       <%= comidas[i].cantidad %>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Precio/Kg</h3>
+                   </div>
+                   <div class="comida-info">
+                       <%= comidas[i].precio %>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Cantidad a Elegir</h3>
+                       <input type="number" name="<%= comidas[i].nombre %>" value="0">
+                   </div>
+               </div>
+           </div>
+           <% } %>
+       <% } %>
+    
+       <h2>Carnes</h2>
+    
+       <% for(var i = 0; i < comidas.length; i++){ %>
+           <% if(comidas[i].categoria == 'carnes'){ %>
+           <div class="comida-container">
+               <div class="div-separador">
+                   <div>
+                       <h3>Imagen</h3>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Nombre</h3>
+                   </div>
+                   <div class="comida-info">
+                       <%= comidas[i].nombre %>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Cantidad</h3>
+                   </div>
+                   <div class="comida-info">
+                       <%= comidas[i].cantidad %>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Precio/Kg</h3>
+                   </div>
+                   <div class="comida-info">
+                       <%= comidas[i].precio %>
+                   </div>
+               </div>
+               <div class="div-separador">
+                   <div>
+                       <h3>Cantidad a Elegir</h3>
+                       <input type="number"name="<%= comidas[i].nombre %>" value="0">
+                   </div>
+               </div>
+           </div>
+           <% } %>
+       <% } %>
+    
+       <button type="submit" class="btn btn-success">
+           Comprar
+       </button>
+    </form>
+</div>
 <%- include('layouts/footer'); -%>

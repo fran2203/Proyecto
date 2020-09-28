@@ -72,28 +72,26 @@ img {
 
 #footer{
   background-color: rgb(224, 224, 224);
-  height: 60px;
+}
+
+/* COMPRA */
+
+.compra-container {
+  margin: 50px;
+}
+.comida-container {
   display: flex;
+  margin-bottom: 20px;
 }
-#left-footer{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+.div-separador {
+  margin: 0 5px;
 }
-#left-footer p{
-  padding: 7px;
-  margin-left: 10px;
+.div-separador h3 {
+  font-size: 25px;
 }
-#right-footer{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-#right-footer p{
-  padding: 7px;
-  margin-right: 10px;
+.comida-info {
+  font-size: 20px;
+  text-align: center;
 }
 
 /* LOGIN */
@@ -110,7 +108,7 @@ img {
   margin-left: 42.5%;
 }
 
-/* SINGUP */
+/* REGISTRO */
 .container {
   max-width: 960px;
 }
@@ -118,5 +116,6 @@ img {
   margin-top: 0%;  margin-left: 25%;
   margin-bottom:  0px;
 }
-
-.lh-condensed { line-height: 1.25; }
+.lh-condensed {
+  line-height: 1.25;
+}
