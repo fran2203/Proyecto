@@ -3,6 +3,7 @@ const router = Router();
 const Comida = require('../DB models/comida');
 const Admin = require('../DB models/admin');
 const passport = require('passport');
+const sendEmail  = require('../libs/nodemailer');
 
 router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a la pag principal (Esto despues lo asociamos al HTML, por ahora lo dejo asi)
     res.render('home');
@@ -117,6 +118,7 @@ router.post('/datos', async (req, res) => {
         for (let i in datos.comidaActualizada) {
             await Comida.findByIdAndUpdate(datos.comidaActualizada[i]._id, datos.comidaActualizada[i])
         }
+        sendEmail(datos);
         res.redirect('/compra-realizada')
     }
     else {
