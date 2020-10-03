@@ -92,10 +92,6 @@ router.post('/comprar', async (req, res) => {
     }
 })
 
-router.get('/datos', (req, res) => {
-    res.render('datos');
-})
-
 var datos = {
     comidaActualizada: [],
     comida: [],
@@ -105,6 +101,15 @@ var datos = {
     email: '',
     pago: ''
 }
+
+router.get('/datos', (req, res) => {
+    if(datos.comida.length == 0){
+	res.redirect('/comprar');
+    }
+    else{
+	res.render('datos')
+    }
+})
 
 router.post('/datos', async (req, res) => {
     if (req.body.pago == "Efectivo") {
@@ -131,7 +136,12 @@ router.get('/compra-realizada', (req, res) => {
 })
 
 router.get('/tarjeta', (req, res) => {
-    res.send('digite datos tarjeta')
+    if(datos.comida.length == 0){
+	res.redirect('/comprar')
+    }
+    else{
+	res.render('payment')
+    }
 })
 
 function autentificacion(req, res, next){
