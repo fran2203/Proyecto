@@ -7,7 +7,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: white;
+  background: rgb(224, 224, 224);
 }
 li{
   display: inline-block;
@@ -42,6 +42,9 @@ li{
   margin-top: 100px;
   margin-left: 10%;
   width: 80%;
+  background-color: #25D366;
+  padding: 20px;
+  border-radius: 20px;
 }
 .cont__img_p {
   display: flex;
@@ -118,4 +121,16 @@ img {
 }
 .lh-condensed {
   line-height: 1.25;
+}
+
+/* ADMIN */
+
+.abajo{
+  margin-top: 30px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.agregar{
+  margin-bottom: 50px;
 }

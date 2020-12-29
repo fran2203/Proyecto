@@ -18,8 +18,11 @@ router.post('/login', passport.authenticate('autentificacion', {
     passReqToCallback: true
 }));
 
-router.get('/admin', autentificacion,(req, res) => {
-    res.send('Administrar');
+router.get('/admin', autentificacion, async (req, res) => {
+    const comidas = await Comida.find();
+    res.render('admin', { 
+        comidas
+    });
 })
 
 router.get('/admin/:id', autentificacion,(req, res) => {
@@ -48,7 +51,7 @@ router.get('/comprar', async (req, res) => {
     });
 })
 
-var msg = '';
+let msg = '';
 
 router.post('/comprar', async (req, res) => {
     msg = '';
