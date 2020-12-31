@@ -40,7 +40,7 @@ router.get('/admin/agregar', autentificacion, (req, res) => {
 router.post('/admin/agregar', autentificacion, async (req, res) => {
     const comida = new Comida(req.body);
     await comida.save();
-    res.send('recibido');
+    res.redirect('/admin/agregar');
 })
 
 router.get('/comprar', async (req, res) => {
