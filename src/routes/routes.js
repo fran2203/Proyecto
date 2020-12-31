@@ -25,16 +25,16 @@ router.get('/admin', autentificacion, async (req, res) => {
     });
 })
 
-router.get('/admin/:id', autentificacion,(req, res) => {
+router.get('/admin/editar/:id', autentificacion,(req, res) => {
     res.send('Editar comida');
 })
 
-router.post('/admin/:id', autentificacion, (req, res) => {
+router.post('/admin/editar/:id', autentificacion, (req, res) => {
     res.send('Editar comida');
 })
 
 router.get('/admin/agregar', autentificacion, (req, res) => {
-    res.send('agregar comida');
+    res.render('admin/agregar');
 })
 
 router.post('/admin/agregar', autentificacion, async (req, res) => {

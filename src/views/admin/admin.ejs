@@ -4,7 +4,7 @@
     <form action="/admin/agregar" method="GET">
         <button class="btn btn-success agregar"> Agregar comida</button>
     </form>
-    <form action="/admin/:id" method="GET">
+    <form action="/admin/editar/:id" method="GET">
     <h2>Frutas</h2>
        <% for(var i = 0; i < comidas.length; i++){ %>
            <% if(comidas[i].categoria == 'frutas'){ %>
