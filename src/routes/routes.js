@@ -20,7 +20,7 @@ router.post('/login', passport.authenticate('autentificacion', {
 
 router.get('/admin', autentificacion, async (req, res) => {
     const comidas = await Comida.find();
-    res.render('admin', { 
+    res.render('admin/admin', { 
         comidas
     });
 })
