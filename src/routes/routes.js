@@ -25,18 +25,26 @@ router.get('/admin', autentificacion, async (req, res) => {
     });
 })
 
-router.get('/admin/editar/:id', autentificacion,(req, res) => {
-    res.send('Editar comida');
+router.get('/admin/editar/:id', autentificacion, async (req, res) => {
+    const { id } = req.params;
+    const comida = await Comida.findById(id)
+    
+    res.render('admin/editar', {
+        comida
+    });
 })
 
-router.post('/admin/editar/:id', autentificacion, (req, res) => {
-    res.send('Editar comida');
+router.post('/admin/editar/:id', autentificacion, async (req, res) => {
+    const {id} = req.params;
+    await Comida.findByIdAndUpdate(id, req.body);
+
+    res.redirect('/admin');
 })
 
 router.get('/admin/eliminar/:id', autentificacion,  async (req, res) => {
     const {id} = req.params;
     await Comida.findByIdAndRemove(id);
-    
+
     res.redirect('/admin');
 })
 
