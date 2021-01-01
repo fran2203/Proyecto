@@ -1,107 +1,94 @@
 <%- include('../layouts/header'); -%>
-<div class ="compra-container">
+<form action="/admin/agregar" method="GET">
+    <button class="btn btn-success btn-lg agregar mt-5"> Agregar comida</button>
+</form>
 
-    <form action="/admin/agregar" method="GET">
-        <button class="btn btn-success btn-block btn-lg agregar"> Agregar comida</button>
-    </form>
-    <form action="/admin/editar/:id" method="GET">
-    <h2>Frutas</h2>
-       <% for(var i = 0; i < comidas.length; i++){ %>
-           <% if(comidas[i].categoria == 'frutas'){ %>
-           <div class="comida-container">
-               <div class="div-separador">
-                   <div>
-                       <h3>Imagen</h3>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Nombre</h3>
-                   </div>
-                   <div class="comida-info">
-                       <%= comidas[i].nombre %>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Cantidad</h3>
-                   </div>
-                   <div class="comida-info">
-                       <%= comidas[i].cantidad %>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Precio/Kg</h3>
-                   </div>
-                   <div class="comida-info">
-                       <%= comidas[i].precio %>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Cantidad a Elegir</h3>
-                       <input type="number" name="<%= comidas[i].nombre %>" value="0">
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div class="abajo">
-                       <button class="btn btn-primary"> Editar </button>
-                   </div>
-               </div>
-           </div>
-           <% } %>
-       <% } %>
-    
-       <h2>Carnes</h2>
-    
-       <% for(var i = 0; i < comidas.length; i++){ %>
-           <% if(comidas[i].categoria == 'carnes'){ %>
-           <div class="comida-container">
-               <div class="div-separador">
-                   <div>
-                       <h3>Imagen</h3>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Nombre</h3>
-                   </div>
-                   <div class="comida-info">
-                       <%= comidas[i].nombre %>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Cantidad</h3>
-                   </div>
-                   <div class="comida-info">
-                       <%= comidas[i].cantidad %>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Precio/Kg</h3>
-                   </div>
-                   <div class="comida-info">
-                       <%= comidas[i].precio %>
-                   </div>
-               </div>
-               <div class="div-separador">
-                   <div>
-                       <h3>Cantidad a Elegir</h3>
-                       <input type="number"name="<%= comidas[i].nombre %>" value="0">
-                   </div>
-               </div>
-               <div class="div-separador">
-                    <div class="abajo">
-                        <button class="btn btn-primary"> Editar </button>
+<div class ="container cont-admin">
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Frutas</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'frutas'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4>Imagen</h4>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4>Nombre</h4>
+                    <div class="comida-info">
+                        <%= comidas[i].nombre %>
                     </div>
-            </div>
-           </div>
-           <% } %>
-       <% } %>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4>Cantidad</h4>
+                    </div>
+                    <div class="comida-info">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4>Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info">
+                        <%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div class="row">
+        </div>
+    </div>
+    
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Carnes</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'carnes'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4>Imagen</h4>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4>Nombre</h4>
+                    <div class="comida-info">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4>Cantidad</h4>
+                    </div>
+                    <div class="comida-info">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4>Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info">
+                        <%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div class="row">
+        </div>
+    </div>
 
-    </form>
 </div>
 <%- include('../layouts/footer'); -%>

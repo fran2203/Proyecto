@@ -1,4 +1,7 @@
 /* header */
+body{
+  background-color: #ecf0f1;
+}
 
 #navbar{
   height: 40px;
@@ -112,30 +115,21 @@ img {
   margin-left: 42.5%;
 }
 
-/* REGISTRO */
-.container {
-  max-width: 960px;
-}
-#container-regis{
-  margin-top: 0%;  margin-left: 25%;
-  margin-bottom:  0px;
-}
-.lh-condensed {
-  line-height: 1.25;
-}
-
 /* ADMIN */
+
+.cont-admin{
+  max-width: 1000px;
+}
 
 .abajo{
   margin-top: 30px;
-  margin-left: 10px;
   text-align: center;
 }
 
 .agregar{
   margin-bottom: 50px;
-  width: 50%;
-  margin-left: 25%;
+  width: 20%;
+  margin-left: 190px;
 }
 
 #agregar-container{
@@ -145,4 +139,8 @@ img {
 #add-food-btn{
   width: 30%;
   margin-left: 35%;
+}
+
+.card-color{
+  background-color: #bdc3c7;
 }
