@@ -33,6 +33,13 @@ router.post('/admin/editar/:id', autentificacion, (req, res) => {
     res.send('Editar comida');
 })
 
+router.get('/admin/eliminar/:id', autentificacion,  async (req, res) => {
+    const {id} = req.params;
+    await Comida.findByIdAndRemove(id);
+    
+    res.redirect('/admin');
+})
+
 router.get('/admin/agregar', autentificacion, (req, res) => {
     res.render('admin/agregar');
 })
