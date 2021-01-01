@@ -134,4 +134,15 @@ img {
 
 .agregar{
   margin-bottom: 50px;
+  width: 50%;
+  margin-left: 25%;
+}
+
+#agregar-container{
+  width: 45%;
+}
+
+#add-food-btn{
+  width: 30%;
+  margin-left: 35%;
 }
