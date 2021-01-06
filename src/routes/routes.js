@@ -169,4 +169,4 @@ function autentificacion(req, res, next){
     res.redirect('/');
 }
 
-module.exports = router;            //La exporto para poder utilizarla en los demas archivos donde se llama este archivo (Index.js)
+module.exports = router;    //La exporto para poder utilizarla en los demas archivos donde se llama este archivo (Index.js)
