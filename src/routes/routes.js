@@ -3,6 +3,8 @@ const router = Router();
 const Comida = require('../DB models/comida');
 const passport = require('passport');
 const sendEmail  = require('../libs/nodemailer');
+const {unlink} = require('fs-extra');
+const path = require('path');
 
 router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a la pag principal (Esto despues lo asociamos al HTML, por ahora lo dejo asi)
     res.render('home');
@@ -42,7 +44,9 @@ router.post('/admin/editar/:id', autentificacion, async (req, res) => {
 
 router.get('/admin/eliminar/:id', autentificacion,  async (req, res) => {
     const {id} = req.params;
-    await Comida.findByIdAndRemove(id);
+    const comida = await Comida.findByIdAndRemove(id);
+
+    await unlink(path.resolve('./src/static/imagenes/' + comida.imagen))
 
     res.redirect('/admin');
 })
