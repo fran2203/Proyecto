@@ -1,7 +1,6 @@
 const {Router} = require('express'); //Importo la funcion Router de express y despues le asocio una constante
 const router = Router();
 const Comida = require('../DB models/comida');
-const Admin = require('../DB models/admin');
 const passport = require('passport');
 const sendEmail  = require('../libs/nodemailer');
 
