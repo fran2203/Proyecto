@@ -92,7 +92,7 @@ img {
 
 /* LOGIN */
 .login-container{
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 17%;
   text-align: center;
 }
@@ -102,6 +102,9 @@ img {
 .login-container .login-input{
   width: 15%;  
   margin-left: 42.5%;
+}
+.login-alert{
+  width: 25%;
 }
 
 /* REGISTRO */

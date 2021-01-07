@@ -21,10 +21,10 @@ passport.use('autentificacion', new Strategy({
     const pass = await Admin.findOne({password: password});
 
     if(!admin) {
-        return done(null, false, req.flash('verficacion', 'El usuario no existe'));
+        return done(null, false, req.flash('verificacion', 'El usuario no existe'));
     }
     if(!pass) {
         return done(null, false, req.flash('verificacion', 'Contraseña incorrecta'));
     }
-    done(null, admin);
+    done(null, admin, req.flash('verificacion', ''));
 }));
