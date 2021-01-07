@@ -19,7 +19,7 @@ const guardado = multer.diskStorage({
         cb(null, new Date().getTime() + path.extname(file.originalname))
     }
 });
-app.use(multer({storage: guardado}).single('imagen'));
+app.use(multer({storage: guardado}).single('img'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(session({
