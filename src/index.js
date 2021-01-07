@@ -20,7 +20,7 @@ const guardado = multer.diskStorage({
     }
 });
 app.use(multer({storage: guardado}).single('img'));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(session({
     secret: 'FranBartoTienda',

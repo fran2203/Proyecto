@@ -53,7 +53,15 @@ router.get('/admin/agregar', autentificacion, (req, res) => {
 })
 
 router.post('/admin/agregar', autentificacion, async (req, res) => {
-    const comida = new Comida(req.body);
+    let food = {
+        nombre: req.body.nombre,
+        categoria: req.body.categoria,
+        cantidad: req.body.cantidad,
+        precio: req.body.precio,
+        imagen: req.file.filename
+    }
+    
+    const comida = new Comida(food);
     await comida.save();
     res.redirect('/admin');
 })
