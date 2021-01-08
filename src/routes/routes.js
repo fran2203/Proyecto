@@ -5,6 +5,7 @@ const passport = require('passport');
 const sendEmail  = require('../libs/nodemailer');
 const {unlink} = require('fs-extra');
 const path = require('path');
+const cloudinary = require('../libs/cloudinary')
 
 router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a la pag principal (Esto despues lo asociamos al HTML, por ahora lo dejo asi)
     res.render('home');
@@ -27,6 +28,25 @@ router.get('/admin', autentificacion, async (req, res) => {
     });
 })
 
+router.get('/admin/agregar', autentificacion, (req, res) => {
+    res.render('admin/agregar');
+})
+
+router.post('/admin/agregar', autentificacion, async (req, res) => {
+    const cloudUpload = await cloudinary.uploader.upload(req.file.path);
+    const comida = new Comida(req.body);
+    comida.imagen = {
+        publicID: cloudUpload.public_id,
+        URL: cloudUpload.url
+    };
+    
+    await comida.save();
+
+    await unlink(req.file.path)
+
+    res.redirect('/admin');
+})
+
 router.get('/admin/editar/:id', autentificacion, async (req, res) => {
     const { id } = req.params;
     const comida = await Comida.findById(id)
@@ -44,43 +64,33 @@ router.post('/admin/editar/:id', autentificacion, async (req, res) => {
     } else {
         const comida = await Comida.findById(id);
 
-        if (comida.imagen != undefined){
-            await unlink(path.resolve('./src/static/imagenes/' + comida.imagen));
-        }
+        await cloudinary.uploader.destroy(comida.imagen.publicID);
+        const cloudUpload = await cloudinary.uploader.upload(req.file.path);
 
         let food = {
             nombre: req.body.nombre,
             categoria: req.body.categoria,
             cantidad: req.body.cantidad,
             precio: req.body.precio,
-            imagen: req.file.filename
+            imagen: {
+                publicId: cloudUpload.public_id,
+                URL: cloudUpload.url
+            }
         }
-
+    
         await Comida.findByIdAndUpdate(id, food);
+        await unlink(req.file.path);
+
         res.redirect('/admin');
     }
-
 })
 
 router.get('/admin/eliminar/:id', autentificacion,  async (req, res) => {
     const {id} = req.params;
-    const comida = await Comida.findByIdAndRemove(id);
-
-    await unlink(path.resolve('./src/static/imagenes/' + comida.imagen));
-
-    res.redirect('/admin');
-})
-
-router.get('/admin/agregar', autentificacion, (req, res) => {
-    res.render('admin/agregar');
-})
-
-router.post('/admin/agregar', autentificacion, async (req, res) => {
-    console.log(req.file)
-    const comida = new Comida(req.body);
-    comida.imagen = req.file.filename;
+    const comida = await Comida.findByIdAndDelete(id);
     
-    await comida.save();
+    await cloudinary.uploader.destroy(comida.imagen.publicID);
+
     res.redirect('/admin');
 })
 

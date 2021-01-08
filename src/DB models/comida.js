@@ -6,7 +6,10 @@ const comidaSchema = new Schema({   //Creo un nuevo esquema (defino las caracter
     categoria: String,
     cantidad: Number,
     precio: Number,
-    imagen: String
+    imagen: {
+        publicID: String,
+        URL: String
+    }
 })
 
 module.exports = mongoose.model('comida',comidaSchema); //Lo exporto para cuando requiera a este archivo en otro
