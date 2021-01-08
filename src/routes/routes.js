@@ -123,7 +123,8 @@ router.post('/comprar', async (req, res) => {
             datos.comidaActualizada.push(nuevaComida);
             var comidaPedida = {
                 nombre: x[0].nombre,
-                cantidad: req.body[i]
+                cantidad: req.body[i],
+                precio: (req.body[i] * x[0].precio)
             }
             datos.comida.push(comidaPedida);
         }
@@ -143,35 +144,40 @@ var datos = {
     apellido: '',
     domicilio: '',
     email: '',
-    pago: ''
+    pago: '',
+    precioFinal: 0
 }
 
 router.get('/datos', (req, res) => {
     if(datos.comida.length == 0){
-	res.redirect('/comprar');
+	    res.redirect('/comprar');
     }
     else{
-	res.render('datos')
+	    res.render('datos')
     }
 })
 
 router.post('/datos', async (req, res) => {
     if (req.body.pago == "Efectivo") {
+        var price = 0;
+        for(let j in datos.comida){
+            price = price + datos.comida[j].precio;
+        }
+
         var { nombre, apellido, domicilio, email, pago } = req.body;
         datos.nombre = nombre;
         datos.apellido = apellido;
         datos.domicilio = domicilio;
         datos.email = email;
         datos.pago = pago
+        datos.precioFinal = price
 
         for (let i in datos.comidaActualizada) {
             await Comida.findByIdAndUpdate(datos.comidaActualizada[i]._id, datos.comidaActualizada[i])
         }
+        
         sendEmail(datos);
         res.redirect('/compra-realizada')
-    }
-    else {
-        res.redirect('/tarjeta')
     }
 })
 

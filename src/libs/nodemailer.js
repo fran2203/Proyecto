@@ -8,6 +8,7 @@ async function sendEmail(datos){
             <li>Apellido: ${datos.apellido}</li>
             <li>Domicilio: ${datos.domicilio}</li>
             <li>Tipo de pago: ${datos.pago}</li>
+            <li>Precio total a pagar: $${datos.precioFinal}</li>
         </ul>
     `
 
