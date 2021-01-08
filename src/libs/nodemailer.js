@@ -18,7 +18,7 @@ async function sendEmail(datos){
         secure: false,
         auth: {
             user: 'supermercadoenvios@outlook.com',
-            pass: 'Supermercado'
+            pass: process.env.MAIL_PASS
         },
         tls: {
             rejectUnauthorized: false

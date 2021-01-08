@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); //Importo mongoose
 
 //Conectar mongoose a la base de datos MongoDB
-mongoose.connect('mongodb+srv://Francisco:fran123@cluster0.9exsf.gcp.mongodb.net/compraonline?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

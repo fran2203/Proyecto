@@ -6,6 +6,11 @@ const multer = require('multer');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
+
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
 require('./db'); //LLamo al archivo db.js (ahi es donde inicializo la base de datos)
 require('./libs/passport');
 
