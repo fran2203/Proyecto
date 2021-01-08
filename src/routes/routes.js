@@ -13,6 +13,7 @@ router.get('/', (req, res) => {     //Configuramos que hacer cuando hay un GET a
 router.get('/login', (req, res) => {
     res.render('login');
 })
+
 router.post('/login', passport.authenticate('autentificacion', {
     successRedirect: '/admin',
     failureRedirect: '/login',
@@ -37,16 +38,35 @@ router.get('/admin/editar/:id', autentificacion, async (req, res) => {
 
 router.post('/admin/editar/:id', autentificacion, async (req, res) => {
     const {id} = req.params;
-    await Comida.findByIdAndUpdate(id, req.body);
+    if (req.file == undefined) {
+        await Comida.findByIdAndUpdate(id, req.body);
+        res.redirect('/admin');
+    } else {
+        const comida = await Comida.findById(id);
 
-    res.redirect('/admin');
+        if (comida.imagen != undefined){
+            await unlink(path.resolve('./src/static/imagenes/' + comida.imagen));
+        }
+
+        let food = {
+            nombre: req.body.nombre,
+            categoria: req.body.categoria,
+            cantidad: req.body.cantidad,
+            precio: req.body.precio,
+            imagen: req.file.filename
+        }
+
+        await Comida.findByIdAndUpdate(id, food);
+        res.redirect('/admin');
+    }
+
 })
 
 router.get('/admin/eliminar/:id', autentificacion,  async (req, res) => {
     const {id} = req.params;
     const comida = await Comida.findByIdAndRemove(id);
 
-    await unlink(path.resolve('./src/static/imagenes/' + comida.imagen))
+    await unlink(path.resolve('./src/static/imagenes/' + comida.imagen));
 
     res.redirect('/admin');
 })
@@ -56,6 +76,7 @@ router.get('/admin/agregar', autentificacion, (req, res) => {
 })
 
 router.post('/admin/agregar', autentificacion, async (req, res) => {
+    console.log(req.file)
     const comida = new Comida(req.body);
     comida.imagen = req.file.filename;
     
