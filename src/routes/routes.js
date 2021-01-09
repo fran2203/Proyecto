@@ -196,7 +196,9 @@ router.get('/compra_realizada', (req, res) => {
     res.render('compra_realizada')
 })
 
-
+router.get('/atencion_cliente', (req, res) =>{
+    res.render('atencion_cliente')
+})
 
 function autentificacion(req, res, next){
     if(req.isAuthenticated()){
