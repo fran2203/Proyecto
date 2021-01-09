@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Hola, usted realizo una compra en nuestra página web, si esto no es así contáctese con nosotros </h1>
+    <ul>
+        <li>Nombre: <%= nombre %></li>
+        <li>Apellido: <%= apellido %></li>
+        <li>Domicilio: <%= domicilio %></li>
+        <li>Tipo de pago: <%= pago %></li>
+        <li>Lista de comida:
+            <ul>
+                <% for(var i = 0; i < largo; i++){ %>
+                <li>Comida: <%= comida[i].nombre %>, Cantidad: <%= comida[i].cantidad %>, Precio: <%= comida[i].precio %></li>
+                <% } %>
+            </ul>
+        </li>
+        <li>Precio total a pagar: <%= precioFinal %></li>
+    </ul>
+</body>
+</html>

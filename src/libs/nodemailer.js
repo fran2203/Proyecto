@@ -1,16 +1,18 @@
 const nodemailer = require('nodemailer');
+const ejs = require('ejs');
+const path = require('path');
 
 async function sendEmail(datos){
-    const HTMLContent = `
-        <h1> Hola, usted realizo una compra en nuestra página web, si esto no es así contáctese con nosotros </h1>
-        <ul>
-            <li>Nombre: ${datos.nombre}</li>
-            <li>Apellido: ${datos.apellido}</li>
-            <li>Domicilio: ${datos.domicilio}</li>
-            <li>Tipo de pago: ${datos.pago}</li>
-            <li>Precio total a pagar: $${datos.precioFinal}</li>
-        </ul>
-    `
+
+    const HTMLContent = await ejs.renderFile(path.join(__dirname, '../views/nodemailer/mail.ejs'), {
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        domicilio: datos.domicilio,
+        pago: datos.pago,
+        comida: datos.comida,
+        largo: datos.comida.length,
+        precioFinal: datos.precioFinal
+    })
 
     const transporter = nodemailer.createTransport({
         host: 'smtp.office365.com',

@@ -160,9 +160,10 @@ var datos = {
 
 router.get('/datos', (req, res) => {
     if(datos.comida.length == 0){
-	    res.redirect('/comprar');
+        res.redirect('/comprar');
     }
     else{
+        console.log(datos.comida.length)
 	    res.render('datos')
     }
 })
