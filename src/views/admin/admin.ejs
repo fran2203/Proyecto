@@ -6,10 +6,194 @@
 <div class ="container cont-admin">
     <div class="card mb-4 p-3 card-color">
         <div class="card-body">
+            <h1 class="card-title">Carnes</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Carnes'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        $<%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
             <h1 class="card-title">Frutas</h2>
             <div class="row">
                 <% for(var i = 0; i < comidas.length; i++){ %>
-                <% if(comidas[i].categoria == 'frutas'){ %>
+                <% if(comidas[i].categoria == 'Frutas'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        $<%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Verduras</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Verduras'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        $<%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Lácteos</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Lácteos'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/u</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Quesos</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Quesos'){ %>
                 <div class="col-md-3 mb-3">
                     <h4 style="text-align: center;">Imagen</h4>
                     <div>
@@ -49,13 +233,59 @@
             </div>
         </div>
     </div>
-    
+
     <div class="card mb-4 p-3 card-color">
         <div class="card-body">
-            <h1 class="card-title">Carnes</h2>
+            <h1 class="card-title">Pastas</h2>
             <div class="row">
                 <% for(var i = 0; i < comidas.length; i++){ %>
-                <% if(comidas[i].categoria == 'carnes'){ %>
+                <% if(comidas[i].categoria == 'Pastas'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/u</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Panificados</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Panificados'){ %>
                 <div class="col-md-3 mb-3">
                     <h4 style="text-align: center;">Imagen</h4>
                     <div>
@@ -79,6 +309,98 @@
                 <div class="col-md-2 mb-3">
                     <div>
                         <h4 style="text-align: center;">Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Fiambres</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Fiambres'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/Kg</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].precio %>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="abajo">
+                        <a href="/admin/editar/<%= comidas[i]._id %>" class="btn btn-primary mr-1">Editar</a>
+                        <a href="/admin/eliminar/<%= comidas[i]._id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 p-3 card-color">
+        <div class="card-body">
+            <h1 class="card-title">Bebidas</h2>
+            <div class="row">
+                <% for(var i = 0; i < comidas.length; i++){ %>
+                <% if(comidas[i].categoria == 'Bebidas'){ %>
+                <div class="col-md-3 mb-3">
+                    <h4 style="text-align: center;">Imagen</h4>
+                    <div>
+                        <img src="<%= comidas[i].imagen.URL %>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h4 style="text-align: center;">Nombre</h4>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].nombre %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Cantidad</h4>
+                    </div>
+                    <div class="comida-info mt-3" style="text-align: center;">
+                        <%= comidas[i].cantidad %>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div>
+                        <h4 style="text-align: center;">Precio/u</h4>
                     </div>
                     <div class="comida-info mt-3" style="text-align: center;">
                         <%= comidas[i].precio %>
