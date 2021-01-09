@@ -24,6 +24,9 @@ li{
 }
 
 /* TITULO */
+.page-title{
+  font-size: 55px;
+}
 
 #title
 {
@@ -45,7 +48,7 @@ li{
   margin-top: 100px;
   margin-left: 10%;
   width: 80%;
-  background-color: #25D366;
+  background-color: #fff;
   padding: 20px;
   border-radius: 20px;
 }
@@ -59,9 +62,8 @@ img {
 .div__p {
   padding: 5px 20px;
 }
-.p_pasos {
+.p__pasos {
   width: 70%;
-  padding-top: 3%;
 }
 
 /* LINK PEDIDO */

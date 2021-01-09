@@ -163,7 +163,6 @@ router.get('/datos', (req, res) => {
         res.redirect('/comprar');
     }
     else{
-        console.log(datos.comida.length)
 	    res.render('datos')
     }
 })
