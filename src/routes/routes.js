@@ -188,22 +188,15 @@ router.post('/datos', async (req, res) => {
         }
         
         sendEmail(datos);
-        res.redirect('/compra-realizada')
+        res.redirect('/compra_realizada')
     }
 })
 
-router.get('/compra-realizada', (req, res) => {
-    res.send('se realizo la compra')
+router.get('/compra_realizada', (req, res) => {
+    res.render('compra_realizada')
 })
 
-router.get('/tarjeta', (req, res) => {
-    if(datos.comida.length == 0){
-	res.redirect('/comprar')
-    }
-    else{
-	res.render('payment')
-    }
-})
+
 
 function autentificacion(req, res, next){
     if(req.isAuthenticated()){
